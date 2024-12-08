@@ -23,7 +23,7 @@ class TestStellarBurgersRegistration:
 
         login_button = driver.find_element(*AuthLogin.al_element_with_login_text)
         assert driver.current_url == Urls.url_login and login_button.text == 'Вход'
-        driver.quit()
+        
 
     def test_registration_empty_name_nothing_happens(self, driver):
         """ При пустом поле Имя ничего не происходит: ошибки и перехода на страницу входа нет """
@@ -34,11 +34,11 @@ class TestStellarBurgersRegistration:
 
         driver.find_element(*AuthRegistration.ar_register_button).click()
         WebDriverWait(driver, 5).until(EC.element_to_be_clickable(AuthRegistration.ar_register_button))
-        time.sleep(2)
+        WebDriverWait(driver, 2)
         errors_messages = driver.find_elements(*AuthRegistration.ar_error_message)
 
         assert driver.current_url == Urls.url_register and len(errors_messages) == 0
-        driver.quit()
+        
 
 
     @pytest.mark.parametrize('email_list', ['test1@yanru', 'test2yan.ru', 'te st3@yan.ru', 'test4@ya n.ru',
@@ -56,7 +56,7 @@ class TestStellarBurgersRegistration:
         error_message = driver.find_element(*AuthRegistration.ar_error_message_2)
 
         assert error_message.text == 'Такой пользователь уже существует'
-        driver.quit()
+        
 
     @pytest.mark.parametrize('password_list', ['1', '12345'])
     def test_login_incorrect_password_less_six_symbols_show_error(self, driver, password_list):
@@ -72,4 +72,4 @@ class TestStellarBurgersRegistration:
         error_message = driver.find_element(*AuthRegistration.ar_error_message)
 
         assert error_message.text == 'Некорректный пароль'
-        driver.quit()
+        
