@@ -3,13 +3,13 @@ class Urls:
     url_main_paige = "https://stellarburgers.nomoreparties.site/"
 
     # Страница входа
-    url_login = "https://stellarburgers.nomoreparties.site/login"
+    url_login = f'{url_main_paige}login'
 
     #  Личный кабинет -> Профиль
-    url_profile = "https://stellarburgers.nomoreparties.site/account/profile"
+    url_profile = f'{url_main_paige}account/profile'
 
     # Страница регистрации
-    url_register = "https://stellarburgers.nomoreparties.site/register"
+    url_register = f'{url_main_paige}register'
 
     # Странца восстановления пароля
-    url_forgot_password = "https://stellarburgers.nomoreparties.site/forgot-password"
+    url_forgot_password = f'{url_main_paige}forgot-password'
